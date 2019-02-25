@@ -31,7 +31,7 @@ public class ItemOnlineServiceImpl implements ItemOnlineService {
 	
 	@Override
 	public ItemDto getItemDetail(String itemName) {		
-		  	return modelMapper.map(itemJPARespository.findByitemname(itemName), ItemDto.class);
+		  	return modelMapper.map(itemJPARespository.findByitemName(itemName), ItemDto.class);
 				//return null;			
 	}
 	
@@ -39,7 +39,7 @@ public class ItemOnlineServiceImpl implements ItemOnlineService {
 	public void updateItemDetail(String itemName) {
 		//modelMapper.map(customerJPARespository., destinationType)
 		ItemBO itemBO = new ItemBO();
-		ItemDto itemDto = modelMapper.map(itemJPARespository.findByitemname(itemName), ItemDto.class);
+		ItemDto itemDto = modelMapper.map(itemJPARespository.findByitemName(itemName), ItemDto.class);
 		itemDto.setDescription("name changed");;
 		modelMapper.map(itemDto, itemBO);
 		itemJPARespository.save(itemBO);
@@ -56,7 +56,7 @@ public class ItemOnlineServiceImpl implements ItemOnlineService {
 	
 	@Override
 	public void removeItem(String itemName) {		
-		itemJPARespository.delete(itemJPARespository.findByitemname(itemName));		
+		itemJPARespository.delete(itemJPARespository.findByitemName(itemName));		
 	}
 	
 	private ModelMapper modelMapper;
