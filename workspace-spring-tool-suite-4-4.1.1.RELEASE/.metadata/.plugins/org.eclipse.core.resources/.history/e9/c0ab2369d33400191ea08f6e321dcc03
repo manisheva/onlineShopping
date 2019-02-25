@@ -1,0 +1,13 @@
+package com.online.shopping.serverConfig;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OnlineShoppingConfigApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OnlineShoppingConfigApplication.class, args);
+	}
+
+}

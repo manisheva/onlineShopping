@@ -1,0 +1,73 @@
+package com.online.shopping.item;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.online.shopping.item.dto.ItemDto;
+import com.online.shopping.itemService.ItemOnlineService;
+
+
+public class ItemServiceController {
+	@RequestMapping("/hello")
+	public String sayHello(){
+		return "hello";
+	}
+	
+	/**
+	 * get the all customer information.
+	 * @return
+	 */
+	@RequestMapping(value = "/service1/items", method = RequestMethod.GET)
+	public ResponseEntity getItems(){
+		//return null;
+		System.out.println("Hiiii--"+itemOnlineService);
+		List<ItemDto> items = itemOnlineService.getItemDetails();
+		System.out.println("Hey::"+items);
+		return new ResponseEntity(items, HttpStatus.OK);
+	}
+	
+	/**
+	 * Fetch the customer information
+	 * @param fname
+	 * @return
+	 */
+	 @RequestMapping(value = "/service1/customer/{fname}", method = RequestMethod.GET) 
+	 public ItemDto getItem(@PathVariable String itemName) {
+		 return itemOnlineService.getItemDetail(itemName); 
+	  }
+	 
+	/**
+	 * Update the info of Item 
+	 * @param fname
+	 */
+	@RequestMapping(value = "/service1/itemUpdate/{itemName}")
+	public void updateItem(@PathVariable String itemName) {
+		itemOnlineService.updateItemDetail(itemName);
+	}
+	 
+	 
+	 /**
+	  * Add New Item Information
+	  * @return
+	  */
+	 @RequestMapping(value = "/service1/addItem")
+	 public String addItem() {		 
+		 itemOnlineService.addItemDetail(); 
+		  return "Item Added...";
+	  }
+	 
+	
+	 @RequestMapping(value = "/service1/deleteItem/{itemName}")
+	 public String removeItem(@PathVariable String itemName) {		 
+		 itemOnlineService.removeItem(itemName); 
+		  return "Item Deleted...";
+	  }
+	 @Autowired
+	 private ItemOnlineService itemOnlineService;
+}

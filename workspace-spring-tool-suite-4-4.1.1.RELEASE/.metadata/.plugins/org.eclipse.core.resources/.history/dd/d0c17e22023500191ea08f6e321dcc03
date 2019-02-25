@@ -1,0 +1,12 @@
+server:
+  port: 8089
+
+  
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: D:\ManishGITHub\onlineShopping\onlineApplication-config
+          #https://github.com/manisheva/onlineShopping/tree/master/onlineApplication-config          skip-ssl-validation: true
+          

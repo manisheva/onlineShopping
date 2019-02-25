@@ -1,0 +1,8 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/manisheva/onlineShopping/tree/master/onlineApplication-config.git

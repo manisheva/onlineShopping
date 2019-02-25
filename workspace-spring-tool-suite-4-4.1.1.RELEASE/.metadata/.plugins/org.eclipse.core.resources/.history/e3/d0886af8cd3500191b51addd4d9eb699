@@ -1,0 +1,20 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { ExportComponent } from './export/export.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ExportComponent,
+    VehicleListComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

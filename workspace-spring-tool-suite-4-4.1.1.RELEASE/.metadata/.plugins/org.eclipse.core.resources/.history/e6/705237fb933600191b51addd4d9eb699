@@ -1,0 +1,70 @@
+package com.online.shopping.itemService;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.online.shopping.item.dto.ItemDto;
+import com.online.shopping.item.model.ItemBO;
+import com.online.shopping.itemDao.ItemJPARespository;
+
+
+@Service
+public class ItemOnlineServiceImpl implements ItemOnlineService {
+	
+	public  ItemOnlineServiceImpl() {
+		modelMapper  = new ModelMapper();
+	}
+
+	@Override
+	public List<ItemDto> getItemDetails() {
+		
+		  List<ItemDto> customerList = itemJPARespository.findAll().stream()
+		  .map(customer -> modelMapper.map(customer,
+		   ItemDto.class)).collect(Collectors.toList()); 
+		  return customerList;
+	
+	}
+	
+	@Override
+	public ItemDto getItemDetail(String fName) {		
+		  	return modelMapper.map(customerJPARespository.findByFname(fName), ItemDto.class);
+				//return null;			
+	}
+	
+	@Override
+	public void updateItemDetail(String itemName) {
+		//modelMapper.map(customerJPARespository., destinationType)
+		ItemBO itemBO = new ItemBO();
+		ItemDto itemDto = modelMapper.map(itemJPARespository.findByitemname(itemName), ItemDto.class);
+		itemDto.setDescription("name changed");;
+		modelMapper.map(customerDto, customerBO);
+		customerJPARespository.save(customerBO);
+	}
+
+	@Override
+	public void addCustomerDetail() {
+		ItemBO customerBO = new ItemBO();
+		ItemDto customerDto = new ItemDto("25", "m.gmail.com", "Man", "Gup");
+		modelMapper.map(customerDto, customerBO);
+		customerJPARespository.save(customerBO);
+		
+	}
+	
+	@Override
+	public void removeCustomer(String fname) {		
+		itemJPARespository.delete(itemJPARespository.findByFname(fname));		
+	}
+	
+	private ModelMapper modelMapper;
+	@Autowired
+	private ItemJPARespository itemJPARespository;
+	//private CustomerShoppingDao customerShoppingDao;
+	
+	
+	
+	
+}

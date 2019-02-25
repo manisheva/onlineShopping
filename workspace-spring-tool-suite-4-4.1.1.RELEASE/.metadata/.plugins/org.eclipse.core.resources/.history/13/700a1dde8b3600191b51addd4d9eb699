@@ -1,0 +1,15 @@
+package com.online.shopping.serverConfig;
+
+import java.util.Arrays;
+
+public class CountFrequency {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String input = "abc xyz abc pqr abc xyz";
+		String []words = input.split(" ");
+		Arrays.stream(words) 
+        .forEach(e->System.out.print(e + " "));
+	}
+
+}

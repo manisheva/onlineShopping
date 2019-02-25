@@ -1,0 +1,19 @@
+package com.online.shopping.serverConfig;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class CountFrequency {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Map<String> map =  new HashMap<String>();
+		String input = "abc xyz abc pqr abc xyz";
+		String []words = input.split(" ");
+		Arrays.stream(words) 
+        .forEach(word->System.out.print(word + " "));
+		
+		
+	}
+
+}
