@@ -3,6 +3,6 @@ spring:
     active: dev
   application:
     name: apps-api-gateway
-  cloud:
-    config:
-      uri: http://localhost:8079
+  #cloud:
+   # config:
+    #  uri: http://localhost:8079

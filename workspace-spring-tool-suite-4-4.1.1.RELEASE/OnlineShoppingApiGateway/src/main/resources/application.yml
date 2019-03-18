@@ -1,0 +1,22 @@
+server:
+  port: 8068
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#ui:
+#  serverUrl: http://localhost:8182/
+  
+security:  basic:    enabled: false   
+management:  security:    enabled: false
+  
+
+zuul:
+  prefix: /onlineShopping
+  routes:
+   customersApi:
+     serviceId: customer-service
+   itemsApi:
+     serviceId: item-service
+   #salesApi:
+     #serviceId: sales-service
